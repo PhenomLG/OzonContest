@@ -21,4 +21,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OzonLib\OzonLib.csproj" />
+  </ItemGroup>
+
 </Project>
