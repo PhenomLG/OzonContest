@@ -2,19 +2,24 @@
 {
     public class Summator
     {
-        private double _a, _b;
-
-        private Summator(double a, double b)
+        // Метод запуска для codeforces
+        public static void Run()
         {
-            _a = a;
-            _b = b;
-        }
+            var count = int.Parse(Console.ReadLine());
+            List<int[]> inputs = new();
+            for (int i = 0; i < count; i++)
+            {
+                var input = Console.ReadLine()?
+                    .Split(" ")
+                    .Select(int.Parse)
+                    .ToArray();
+                inputs.Add(input);
+            }
 
-        public static Summator SetValues(double a, double b)
-        {
-            return new Summator(a, b);
+            var results = inputs.Select(nums => nums[0] + nums[1]).ToArray();
+            foreach (var result in results)
+                Console.WriteLine(result);
+            
         }
-
-        public double Sum() => _a + _b;
     }
 }
