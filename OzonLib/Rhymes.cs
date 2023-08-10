@@ -36,15 +36,17 @@ public class Rhymes
 
                 if (request.Substring(request.Length - j, j) == substring && substring.Length > maxSuffixLength)
                 {
-                    maxSuffixLength = substring.Length;
                     if (str != request)
+                    {
                         wordWithMaxSuffix = str;
+                        maxSuffixLength = substring.Length;
+                    }
                 }
             }
         }
 
         if (wordWithMaxSuffix == "")
-            return dict.ElementAt(new Random().Next(0, dict.Count() - 1));
+            return dict.ToList()[0];
 
         return wordWithMaxSuffix;
     }

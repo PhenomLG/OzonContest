@@ -20,6 +20,13 @@ public class RhymesTest
     }
 
     [Fact]
+    public void Test3()
+    {
+        var result = Rhymes.FindLongestSuffix("void", _dict);
+        Assert.Equal("id", result);
+    }
+
+    [Fact]
     public void Test4()
     {
         var result = Rhymes.FindLongestSuffix("forces", _dict);
@@ -40,5 +47,74 @@ public class RhymesTest
         Assert.Equal("task", result);
     }
 
+    [Fact]
+    public void Test7()
+    {
+        string[] dict = new[]
+        {
+            "sss",
+            "ddvlwswlsd",
+            "swvw",
+            "dl",
+            "llwllvw",
+            "swdsdwsvd",
+            "vwvsv",
+            "wslswds",
+            "vwswll",
+            "wwvdsslwd",
+            "wsvvlsw",
+            "lvvlvsdss",
+            "ldwlvsd",
+            "v",
+            "wvldwd",
+            "ldlddvddvv",
+            "vsswwll",
+            "svwl",
+            "sldwdsvsv",
+            "svdw",
+        };
 
+        string[] requests =
+        {
+            "vwlldlswl",
+            "slvlvdldw",
+            "vwls",
+            "dl",
+            "lvs",
+            "ldvsl",
+            "ddlsw",
+            "d",
+            "svsvvwsdwl",
+            "vlssldswlw",
+            "lvlsdl",
+            "s",
+            "vlwlssld",
+            "ldvl",
+            "dvvvwsssww",
+            "vdlvldw",
+            "wwv",
+            "dlwlwwsvdl",
+            "swsw",
+            "dwldddwwl",
+        };
+
+        var answers = GetStringArrayFromTestFile(Path.Combine(Directory.GetCurrentDirectory(), @"tests\09.a")).ToList();
+
+        for (int i = 0; i < requests.Length; i++)
+        {
+            var result = Rhymes.FindLongestSuffix(requests[i], dict);
+            Assert.Equal(answers[i], result);
+        }
+    }
+
+    private IEnumerable<string> GetStringArrayFromTestFile(string path)
+    {
+        var reader = File.OpenText(path);
+        List<string> results = new List<string>();
+        string? input;
+        while ((input = reader.ReadLine()) != null)
+            results.Add(input);
+
+        return results;
+    }
 }
