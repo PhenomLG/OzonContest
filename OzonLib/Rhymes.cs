@@ -15,9 +15,14 @@ public class Rhymes
         for (int i = 0; i < requestsQnt; i++)
             requests[i] = Console.ReadLine();
 
+        var noDupesDict = dict.Distinct().ToList();
+
+        Dictionary<string, string> handledRequests = new Dictionary<string, string>();
         foreach (var request in requests)
         {
-            Console.WriteLine(FindLongestSuffix(request, dict));
+            if(!handledRequests.ContainsKey(request))
+                handledRequests.Add(request, FindLongestSuffix(request, noDupesDict));
+            Console.WriteLine(handledRequests[request]);
         }
     }
 
