@@ -21,21 +21,9 @@ public class Discount
         {
             Console.WriteLine(CalcDiscount(sets[i].Item1, sets[i].Item2));
         }
-
-    }
-    string HandleSets(int sets)
-    {
-        int[] result = new int[sets];
-        for (int i = 0; i < sets; i++)
-        {
-            var (goodsQnt, prices) = GetPricesInput();
-            result[i] = CalcDiscount(goodsQnt, prices);
-        }
-
-        return string.Join("\n", result);
     }
 
-    private static int CalcDiscount(int goodsQnt, int[] prices)
+    public static int CalcDiscount(int goodsQnt, int[] prices)
     {
         Dictionary<int, int> pricesKeeper = new();
         foreach (var price in prices)
@@ -51,28 +39,5 @@ public class Discount
             cost += (qnt - qnt / 3) * price;
 
         return cost;
-    }
-
-
-    (int, int[]) GetPricesInput()
-    {
-        int[] InputPrices()
-        {
-            return Console.ReadLine()
-                .Split(' ')
-                .Select(int.Parse)
-                .ToArray();
-        }
-
-        int.TryParse(Console.ReadLine(), out var goodsQnt);
-        int[] prices;
-        do
-        {
-            prices = InputPrices();
-            if (prices.Length != goodsQnt)
-                Console.WriteLine("Введено неправильное количество цен. Попробуйте еще раз.");
-        } while
-            (prices.Length != goodsQnt);
-        return (goodsQnt, prices);
     }
 }
