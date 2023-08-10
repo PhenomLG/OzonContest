@@ -20,11 +20,15 @@ public class PairProgramming
 
         for (int i = 0; i < setsQnt; i++)
         {
-            Console.WriteLine(FormTeam(sets[i].Item1, sets[i].Item2));
+            foreach (var team in FormTeams(sets[i].Item1, sets[i].Item2))
+            {
+                Console.WriteLine($"{team[0]} {team[1]}");
+            }
+            Console.WriteLine();
         }
     }
 
-    public static List<int[]> FormTeam(int devQnt, int[] devLevels)
+    public static List<int[]> FormTeams(int devQnt, int[] devLevels)
     {
         List<int[]> pairs = new List<int[]>();
 
