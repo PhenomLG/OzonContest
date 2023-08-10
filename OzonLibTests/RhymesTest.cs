@@ -107,6 +107,22 @@ public class RhymesTest
         }
     }
 
+    [Fact]
+    public void Test8()
+    {
+        var dict = GetStringArrayFromTestFile(Path.Combine(Directory.GetCurrentDirectory(), @"tests\16.dict")).ToList();
+        var requests = GetStringArrayFromTestFile(Path.Combine(Directory.GetCurrentDirectory(), @"tests\16.requests")).ToList();
+        var answers = GetStringArrayFromTestFile(Path.Combine(Directory.GetCurrentDirectory(), @"tests\16.a")).ToList();
+
+        for (int i = 0; i < requests.Count; i++)
+        {
+            var result = Rhymes.FindLongestSuffix(requests[i], dict);
+            Assert.Equal(answers[i], result);
+        }
+    }
+
+
+
     private IEnumerable<string> GetStringArrayFromTestFile(string path)
     {
         var reader = File.OpenText(path);
