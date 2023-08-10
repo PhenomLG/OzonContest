@@ -19,7 +19,6 @@
             var results = inputs.Select(nums => nums[0] + nums[1]).ToArray();
             foreach (var result in results)
                 Console.WriteLine(result);
-            
         }
     }
 }
