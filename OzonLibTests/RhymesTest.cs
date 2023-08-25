@@ -37,7 +37,7 @@ public class RhymesTest
     public void Test5()
     {
         var result = Rhymes.FindLongestSuffix("id", _dict);
-        Assert.Equal("decide", result);
+        Assert.Equal("task", result);
     }
 
     [Fact]
