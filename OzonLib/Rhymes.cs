@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace OzonLib;
+﻿namespace OzonLib;
 
 public class Rhymes
 {
@@ -36,7 +34,7 @@ public class Rhymes
             int i = word.Length - 1;
             int maxLengthLoop = 0;
             string resultLoop = string.Empty;
-            while (i > 0)
+            while (i >= 0)
             {
                 var res = FindWord(word.Substring(i, word.Length - i), request);
                 i--;
@@ -58,7 +56,13 @@ public class Rhymes
         }
 
         if (string.IsNullOrEmpty(resultWord))
-            return dict.ToArray()[0];
+        {
+            int i = 0;
+            while (dict.ToArray()[i] == request)
+                i++;
+            return dict.ToArray()[i];
+        }
+
         return resultWord;
     }
 
@@ -72,18 +76,17 @@ public class Rhymes
         int j = t.Length - 1;
         int i = a.Length - 1;
 
-        while (i > n)
+        while (i >= n)
         {
             if (a[i] != t[j])
                 return "";
 
             i--;
             j--;
-            if (j == m || j == -1)
+            if (/*j == m || */j == -1)
                 return word;
         }
 
         return "";
     }
-
 }
